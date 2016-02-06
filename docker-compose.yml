@@ -3,3 +3,8 @@ reftec-elasticsearch:
   ports:
     - '9200:9200'
     - '9300:9300'
+reftec-api:
+  build: .
+  ports:
+    - '1337:1337'
+  entrypoint: node index.js
