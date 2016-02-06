@@ -24,11 +24,11 @@ oboy((expect, sinon, proxyquire) => {
       }
 
       elastic = {
-        save: sinon.stub(),
+        saveUser: sinon.stub(),
         '@noCallThru': true
       }
 
-      elastic.save.resolves(123456)
+      elastic.saveUser.resolves(123456)
 
       users = proxyquire(process.cwd() + '/lib/routes/users', {
         '../adapters/elastic': elastic
@@ -67,7 +67,7 @@ oboy((expect, sinon, proxyquire) => {
 
         users.update(req)
 
-        expect(elastic.save).calledWith({
+        expect(elastic.saveUser).calledWith({
           id: '0707100100',
           foo: {
             bar: {
