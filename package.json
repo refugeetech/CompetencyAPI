@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "elasticsearch": "^10.1.3",
+    "nconf": "^0.8.4",
     "restify": "^4.0.3"
   },
   "devDependencies": {

@@ -40,7 +40,6 @@ oboy((expect, sinon, proxyquire) => {
         elastic.init();
 
         expect(elasticsearch.Client).called;
-        expect(client.ping).called;
       });
     });
 
