@@ -15,7 +15,8 @@ oboy((expect, sinon, proxyquire) => {
       next = sinon.spy()
 
       req = {
-        body: {}
+        body: {},
+        params: {}
       }
 
       res = {
@@ -34,36 +35,60 @@ oboy((expect, sinon, proxyquire) => {
       })
     })
 
-    it('rejects if we do not have a phone number', () => {
-      users.create(req, res, next)
+    describe('#update()', () => {
+      it('rejects if we do not have a phone number', () => {
+        users.update(req, res, next)
 
-      expect(next).calledWith(new restifyErrors.BadRequestError('Missing Phone Number'))
-    })
-
-    it('saves the user to elastic', () => {
-
-      req.body = {
-        phoneNumber: '0707100100'
-      }
-
-      users.create(req)
-
-      expect(elastic.save).calledWith({
-        phoneNumber: '0707100100'
+        expect(next).calledWith(new restifyErrors.BadRequestError('Missing Phone Number'))
       })
-    })
 
-    it('sends back the userId and calls next after', () => {
-      req.body = {
-        phoneNumber: '0707100100'
-      }
+      it('rejects if we do not get a proper phone number', () => {
+        req.params = {
+          id: 'it borked'
+        }
 
-      return users
-        .create(req, res, next)
-        .then(() => {
-          expect(res.send, 'res.send').calledWith(123456)
-          expect(next).calledWith()
+        users.update(req, res, next)
+
+        expect(next).calledWith(new restifyErrors.BadRequestError('Malformed Phone Number'))
+      })
+
+      it('changes the number to local format and merges it to the request body and saves the user to elastic', () => {
+        req.params = {
+          id: '+46707100100'
+        }
+
+        req.body = {
+          foo: {
+            bar: {
+              herp: 'derp'
+            }
+          }
+        }
+
+        users.update(req)
+
+        expect(elastic.save).calledWith({
+          id: '0707100100',
+          foo: {
+            bar: {
+              herp: 'derp'
+            }
+          }
         })
+      })
+
+      it('sends back the userId and calls next after', () => {
+        req.params = {
+          id: '0707100100'
+        }
+
+        return users
+          .update(req, res, next)
+          .then(() => {
+            expect(res.send, 'res.send').calledWith(123456)
+            expect(next).calledWith()
+          })
+      })
     })
   })
 })
