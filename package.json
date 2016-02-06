@@ -10,5 +10,11 @@
   "license": "ISC",
   "dependencies": {
     "restify": "^4.0.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-mocha": "^2.1.3",
+    "gulp-plumber": "^1.0.1",
+    "oboy": "^1.1.0"
   }
 }
