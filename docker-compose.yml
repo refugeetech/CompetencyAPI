@@ -8,3 +8,5 @@ competency-api:
   ports:
     - '1337:1337'
   entrypoint: node index.js
+  links:
+    - 'competency-elasticsearch:elasticsearch'
