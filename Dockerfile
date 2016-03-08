@@ -8,5 +8,6 @@ RUN npm install --production
 
 ADD ./lib /app/lib
 ADD ./index.js /app/index.js
+ADD ./config.json /app/config.json
 
 CMD npm start
