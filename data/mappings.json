@@ -1,5 +1,5 @@
 {
-  "users": {
+  "userz": {
     "index": "users",
     "type": "user",
     "body": {
