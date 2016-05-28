@@ -1,0 +1,25 @@
+{
+  "users": {
+    "index": "users",
+    "type": "user",
+    "body": {
+      "user": {
+        "properties": {
+          "occupations": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "index": "not_analyzed"
+              },
+              "code": {
+                "type": "string",
+                "index": "not_analyzed"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
