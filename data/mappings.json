@@ -6,7 +6,7 @@
       "user": {
         "properties": {
           "occupations": {
-            "type": "object",
+            "type": "nested",
             "properties": {
               "name": {
                 "type": "string",
