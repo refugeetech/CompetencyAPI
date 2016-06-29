@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index",
-    "test": "node_modules/mocha/bin/mocha test --recursive",
-    "dlite": "ELASTICSEARCH=`dlite ip` nodemon"
+    "test": "node_modules/mocha/bin/mocha test --recursive"
   },
   "author": "",
   "license": "ISC",
