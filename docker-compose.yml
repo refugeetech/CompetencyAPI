@@ -1,12 +1,16 @@
 competency-elasticsearch:
-  image: elasticsearch
+  image: 'elasticsearch:latest'
   ports:
     - '9200:9200'
     - '9300:9300'
+  volumes:
+    - '/Users/ilix/elasticsearch/data:/usr/share/elasticsearch/data'
 competency-api:
   build: .
   ports:
-    - '1337:1337'
+    - '1338:1338'
   entrypoint: node index.js
+  environment:
+    - 'PORT=1338'
   links:
     - 'competency-elasticsearch:elasticsearch'

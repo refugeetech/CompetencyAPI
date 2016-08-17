@@ -1,12 +1,12 @@
 {
-  "userz": {
+  "users": {
     "index": "users",
     "type": "user",
     "body": {
       "user": {
         "properties": {
           "occupations": {
-            "type": "object",
+            "type": "nested",
             "properties": {
               "name": {
                 "type": "string",
