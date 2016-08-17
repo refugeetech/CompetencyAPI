@@ -14,7 +14,8 @@
     "nconf": "^0.8.4",
     "node-uuid": "^1.4.7",
     "request-promise": "^2.0.1",
-    "restify": "^4.0.3"
+    "restify": "^4.0.3",
+    "moment": "^2.14.1"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
